@@ -13,5 +13,5 @@ export default async(setting: LX.AppSetting) => {
   initPlayerEvent()
   initWatchList()
   initPlayProgress()
-  await initLyric(setting)
+  // await initLyric(setting)
 }

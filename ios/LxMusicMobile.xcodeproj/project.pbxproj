@@ -10,6 +10,7 @@
 		00E356F31AD99517003FC87E /* LxMusicMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LxMusicMobileTests.m */; };
 		092548682CB77BE8009FB985 /* RCTUtilsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 092548672CB77BE8009FB985 /* RCTUtilsModule.m */; };
 		0925486D2CB78F31009FB985 /* RCTUserApiModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0925486C2CB78F31009FB985 /* RCTUserApiModule.m */; };
+		092548712CB7933B009FB985 /* RCTFileSystemModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 092548702CB7933B009FB985 /* RCTFileSystemModule.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-LxMusicMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-LxMusicMobile.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -37,6 +38,8 @@
 		092548692CB77C07009FB985 /* RCTUtilsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTUtilsModule.h; sourceTree = "<group>"; };
 		0925486B2CB78F23009FB985 /* RCTUserApiModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTUserApiModule.h; sourceTree = "<group>"; };
 		0925486C2CB78F31009FB985 /* RCTUserApiModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTUserApiModule.m; sourceTree = "<group>"; };
+		0925486F2CB7932F009FB985 /* RCTFileSystemModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTFileSystemModule.h; sourceTree = "<group>"; };
+		092548702CB7933B009FB985 /* RCTFileSystemModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTFileSystemModule.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* LxMusicMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LxMusicMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = LxMusicMobile/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = LxMusicMobile/AppDelegate.mm; sourceTree = "<group>"; };
@@ -109,9 +112,19 @@
 			name = userApi;
 			sourceTree = "<group>";
 		};
+		0925486E2CB79304009FB985 /* fileSystem */ = {
+			isa = PBXGroup;
+			children = (
+				0925486F2CB7932F009FB985 /* RCTFileSystemModule.h */,
+				092548702CB7933B009FB985 /* RCTFileSystemModule.m */,
+			);
+			name = fileSystem;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* LxMusicMobile */ = {
 			isa = PBXGroup;
 			children = (
+				0925486E2CB79304009FB985 /* fileSystem */,
 				0925486A2CB78F13009FB985 /* userApi */,
 				092548662CB77BCD009FB985 /* utils */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -423,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				092548712CB7933B009FB985 /* RCTFileSystemModule.m in Sources */,
 				0925486D2CB78F31009FB985 /* RCTUserApiModule.m in Sources */,
 				092548682CB77BE8009FB985 /* RCTUtilsModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
@@ -615,7 +629,10 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -684,7 +701,10 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

@@ -47,7 +47,8 @@ export default ({ children }: Props) => {
         resizeMode="cover"
       >
       </ImageBackground>
-      <View style={{ flex: 1, flexDirection: 'column', backgroundColor: theme['c-main-background'] }}>
+      {/* todo safearea */}
+      <View style={{ flex: 1, paddingTop: 55, paddingBottom: 55, flexDirection: 'column', backgroundColor: theme['c-main-background'] }}>
         {children}
       </View>
     </View>
@@ -63,7 +64,7 @@ export default ({ children }: Props) => {
         >
           <View style={{ flex: 1, flexDirection: 'column', backgroundColor: theme['c-content-background'], opacity: 0.76 }}></View>
         </ImageBackground>
-        <View style={{ flex: 1, flexDirection: 'column' }}>
+        <View style={{ flex: 1, paddingTop: 55, paddingBottom: 55, flexDirection: 'column' }}>
           {children}
         </View>
       </View>

@@ -8,12 +8,12 @@
 
 + (NSDictionary*)getWindowSize {
   CGRect screenBounds = [UIScreen mainScreen].bounds;
-  CGFloat screenWidth = screenBounds.size.width;
-  CGFloat screenHeight = screenBounds.size.height;
+  CGFloat screenWidth = screenBounds.size.width * UIScreen.mainScreen.scale;
+  CGFloat screenHeight = screenBounds.size.height * UIScreen.mainScreen.scale;
 
   NSMutableDictionary *d = [[NSMutableDictionary alloc] init];
-  [d setObject:@"width" forKey: [NSString stringWithFormat:@"%f", screenWidth]];
-  [d setObject:@"height" forKey: [NSString stringWithFormat:@"%f", screenHeight]];
+  [d setObject: [NSString stringWithFormat:@"%f", screenWidth] forKey: @"width"];
+  [d setObject: [NSString stringWithFormat:@"%f", screenHeight] forKey: @"height"];
   return d;
 }
 
@@ -31,7 +31,7 @@ RCT_EXPORT_METHOD(getWindowSize:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
 
 RCT_EXPORT_METHOD(getSystemLocales:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-  resolve(@"");
+  resolve(@"zh_cn");
 }
 
 @end

@@ -1,8 +1,9 @@
-import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { DrawerLayoutAndroid, type DrawerLayoutAndroidProps, View, type LayoutChangeEvent } from 'react-native'
 // import { getWindowSise } from '@/utils/tools'
 import { usePageVisible } from '@/store/common/hook'
 import { type COMPONENT_IDS } from '@/config/constant'
+import { getWindowSize } from '@/utils/windowSizeTools'
 
 interface Props extends DrawerLayoutAndroidProps {
   visibleNavNames: COMPONENT_IDS[]
@@ -28,6 +29,12 @@ const DrawerLayoutFixed = forwardRef<DrawerLayoutFixedType, Props>(({ visibleNav
     // console.log('usePageVisible', visible, changedRef.current.width)
     setW(changedRef.current.width - 1)
   }, [])
+
+  // useEffect(() => {
+  //   getWindowSize().then((size) => {
+  //     setDrawerWidth(size.width)
+  //   })
+  // }, [])
 
   // 修复 DrawerLayoutAndroid 在导航到其他屏幕再返回后无法打开的问题
   usePageVisible(visibleNavNames, useCallback((visible) => {
@@ -62,7 +69,7 @@ const DrawerLayoutFixed = forwardRef<DrawerLayoutFixedType, Props>(({ visibleNav
       // 重新设置面板宽度
       const wp = Math.floor(width * widthPercentage)
       // console.log(wp, widthPercentageMax)
-      setDrawerWidth(widthPercentageMax ? Math.min(wp, widthPercentageMax) : wp)
+      // setDrawerWidth(widthPercentageMax ? Math.min(wp, widthPercentageMax) : wp)
 
       // 强制触发渲染以应用更改
       changedRef.current.changed = true
@@ -75,16 +82,16 @@ const DrawerLayoutFixed = forwardRef<DrawerLayoutFixedType, Props>(({ visibleNav
       onLayout={handleLayout}
       style={{ width: w, flex: 1 }}
     >
-      <DrawerLayoutAndroid
+      {/* <DrawerLayoutAndroid
         ref={drawerLayoutRef}
         keyboardDismissMode="on-drag"
         drawerWidth={drawerWidth}
         {...props}
-      >
+      > */}
         <View style={{ marginRight: w == '100%' ? 0 : -1, flex: 1 }}>
           {children}
         </View>
-      </DrawerLayoutAndroid>
+      {/* </DrawerLayoutAndroid> */}
     </View>
   )
 })

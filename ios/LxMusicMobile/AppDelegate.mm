@@ -5,6 +5,7 @@
 
 #import "RCTUtilsModule.h"
 #import "RCTUserApiModule.h"
+#import "RCTFileSystemModule.h"
 
 @implementation AppDelegate
 
@@ -18,6 +19,11 @@
   
   [RCTUtilsModule alloc];
   [RCTUserApiModule alloc];
+  [RCTFileSystemModule alloc];
+
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  NSURL *docsDir = [fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+  [fileManager createDirectoryAtPath:[[docsDir URLByAppendingPathComponent:@"music"] path] withIntermediateDirectories:YES attributes:nil error:nil];
 
   return YES;
 }

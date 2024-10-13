@@ -286,7 +286,7 @@ RCT_EXPORT_METHOD(mv:(NSString*)from to:(NSString*)to resolver:(RCTPromiseResolv
   [RCTFileSystemModule mv:from to:to];
   resolve([NSNumber numberWithBool:YES]);
 }
-RCT_EXPORT_METHOD(exists:(NSString*)path: resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(exists:(NSString*)path: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   BOOL e = [RCTFileSystemModule exists:path];
   resolve([NSNumber numberWithBool:e]);
 }
